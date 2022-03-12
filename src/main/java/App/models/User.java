@@ -45,10 +45,6 @@ public class User implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String confirmPassword;
 
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @NotNull
-    private Cart cart;
 
     @Enumerated(EnumType.STRING)
     private Role role;

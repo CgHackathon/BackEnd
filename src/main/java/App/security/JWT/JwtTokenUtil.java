@@ -25,7 +25,7 @@ public class JwtTokenUtil /*implements Serializable*/ {
     private String secret;
 
     //retrieve username from jwt token
-    public String getUserEmailFromToken(String token) {
+    public String getUserNameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 

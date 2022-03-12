@@ -5,7 +5,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
-import App.validation.AdvanceInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,6 +15,7 @@ import java.util.*;
 @Entity
 public class User implements UserDetails {
     @Id
+    @NotBlank(message = "User Name is required")
     private String userName;
 
     @NotBlank(message = "User first Name is required")

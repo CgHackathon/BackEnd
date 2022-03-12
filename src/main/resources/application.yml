@@ -10,5 +10,5 @@ spring:
     password: 12345
 jwt:
   secret: ahmedeliwa
-#  spring.jpa.properties.hibernate.
-#  spring.jpa.properties.hibernate.dialect.storage_engine=innodb
+
+#  create-drop

@@ -1,10 +1,8 @@
 package App.services.Implementation;
 
 import App.models.DTO.DTOMessage;
-import App.models.Letter;
 import App.models.Message;
 import App.repos.MessageRepo;
-import App.repos.UserRepo;
 import App.services.interfaces.LetterService;
 import App.services.interfaces.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;

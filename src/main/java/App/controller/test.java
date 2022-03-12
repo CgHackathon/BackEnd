@@ -23,6 +23,6 @@ public class test {
 
     @GetMapping("test")
     private Object Hello() {
-        return new DTOMessage();
+        return new User();
     }
 }

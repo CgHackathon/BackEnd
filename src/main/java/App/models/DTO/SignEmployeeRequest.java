@@ -1,8 +1,6 @@
 package App.models.DTO;
 
-import App.models.Employee;
 import App.models.Role;
-import App.models.User;
 import lombok.Data;
 
 import javax.validation.constraints.Email;

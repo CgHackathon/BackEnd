@@ -4,18 +4,13 @@ package App.controller;
 import App.models.DTO.DTOMessage;
 import App.models.Prescription;
 import App.models.Report;
-import App.models.User;
 import App.security.JWT.JwtTokenUtil;
 import App.services.interfaces.PrescriptService;
 import App.services.interfaces.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
-
 @CrossOrigin
 @RequestMapping("/doctor")
 @RestController

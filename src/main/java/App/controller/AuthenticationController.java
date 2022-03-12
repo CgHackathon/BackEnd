@@ -15,8 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.validation.Valid;
 import java.util.Map;
 
 @CrossOrigin
@@ -56,7 +54,7 @@ public class AuthenticationController {
     @PostMapping("/signEmployee")
     public void signUp(@RequestBody SignEmployeeRequest employee) {
         if (userRepo.existsById(employee.getUserName()))
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: User Email is already in use!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: User Name is already in use!");
         try{
             Employee e = employeeService.getEmployee(employee);
             employeeRepo.save(e);

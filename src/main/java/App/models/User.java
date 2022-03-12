@@ -1,50 +1,38 @@
 package App.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 import App.validation.AdvanceInfo;
-import App.validation.PasswordMatch;
-import App.validation.ValidPassword;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Data
-//@MappedSuperclass
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@PasswordMatch(groups = AdvanceInfo.class, message = "password and confirmed password don't match")
 public class User implements UserDetails {
     @Id
-    @Email
-    private String email;
+    private String userName;
+
     @NotBlank(message = "User first Name is required")
     private String fName;
+
     @NotBlank(message = "User Last Name is required")
     private String lName;
 
+    @Column(unique = true)
+    @Email
+    private String email;
+
+    @NotBlank(message = "User phone is required")
+    private String phoneNumber;
+
     @NotBlank(message = "User Password is required")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ValidPassword(groups = AdvanceInfo.class)
     private String password;
-
-    @NotBlank(message = "User Confirm Password is required",groups = AdvanceInfo.class)
-    @Transient
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String confirmPassword;
-
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -58,7 +46,7 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public String getUsername() {
-        return email;
+        return userName;
     }
 
     @JsonIgnore

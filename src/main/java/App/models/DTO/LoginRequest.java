@@ -1,17 +1,14 @@
-package App.models.restModles;
+package App.models.DTO;
 
 import lombok.Data;
-import App.validation.ValidPassword;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
 public class LoginRequest {
     @NotBlank(message = "User Email is required")
-    @Email
-    private String email;
+    private String userName;
+
     @NotBlank(message = "User Password is required")
-    @ValidPassword
     private String password;
 }

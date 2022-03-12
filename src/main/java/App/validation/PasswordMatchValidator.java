@@ -13,12 +13,12 @@ public class PasswordMatchValidator implements ConstraintValidator<PasswordMatch
     }
 
     public boolean isValid(User user, ConstraintValidatorContext c) {
-        String plainPassword = user.getPassword();
-        String repeatPassword = user.getConfirmPassword();
-
-        if (plainPassword == null || !plainPassword.equals(repeatPassword)) {
-            return false;
-        }
+//        String plainPassword = user.getPassword();
+//        String repeatPassword = user.getConfirmPassword();
+//
+//        if (plainPassword == null || !plainPassword.equals(repeatPassword)) {
+//            return false;
+//        }
 
         return true;
     }

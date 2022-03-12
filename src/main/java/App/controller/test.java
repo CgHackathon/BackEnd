@@ -1,5 +1,6 @@
 package App.controller;
 
+import App.models.DTO.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import App.repos.UserRepo;
@@ -14,6 +15,6 @@ public class test {
 
     @GetMapping("test")
     private Object Hello() {
-        return userRepo.topUser(10);
+        return new LoginRequest();
     }
 }

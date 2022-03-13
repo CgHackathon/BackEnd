@@ -26,8 +26,7 @@ public class DoctorController {
     @Autowired
     ReportService reportService;
 
-    @Autowired
-    UserService userService;
+
 
     @PostMapping("/sendPrescript")
     public void sendPrescript(@RequestBody DTOMessage prescription) {
@@ -46,13 +45,5 @@ public class DoctorController {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
         return reportService.getByToUserName(userName);
     }
-
-    @GetMapping("/getInfo")
-    public User getInfo(@RequestHeader("Authorization") String token) {
-        String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
-        return userService.get(userName);
-    }
-
-
 
 }

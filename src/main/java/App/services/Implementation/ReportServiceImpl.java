@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void sendReport(DTOMessage message) {
+        System.out.println(message);
         Report r = getLetter(message);
         if(r.getTo().getRole() != Role.Doctor)
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Error: Report must be sent to doctor role");
@@ -39,7 +41,7 @@ public class ReportServiceImpl implements ReportService {
         Report l = new Report();
         l.setFrom(userRepo.getById(dtoMessage.getFrom()));
         l.setTo(userRepo.getById(dtoMessage.getTo()));
-        l.setTime(dtoMessage.getDate());
+        l.setTime(new Date());
         l.setContent(dtoMessage.getContent());
         return l;
     }

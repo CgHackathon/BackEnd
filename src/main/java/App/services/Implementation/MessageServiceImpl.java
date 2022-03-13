@@ -8,6 +8,7 @@ import App.services.interfaces.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,7 +34,7 @@ public class MessageServiceImpl implements MessageService {
         Message l = new Message();
         l.setFrom(userRepo.getById(dtoMessage.getFrom()));
         l.setTo(userRepo.getById(dtoMessage.getTo()));
-        l.setTime(dtoMessage.getDate());
+        l.setTime(new Date());
         l.setContent(dtoMessage.getContent());
         return l;
     }

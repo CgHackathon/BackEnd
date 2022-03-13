@@ -1,5 +1,6 @@
 package App.security;
 
+import App.models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -74,9 +75,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll();
-//                .anyRequest().authenticated();
-                //.anyRequest().hasAuthority(Role.CUSTOMER.name())
+                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/doctor/**").hasAuthority(Role.Doctor.name())
+                .antMatchers("/student/**").hasAuthority(Role.Student.name())
+                .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }

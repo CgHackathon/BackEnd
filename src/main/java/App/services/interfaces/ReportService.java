@@ -11,5 +11,6 @@ public interface ReportService {
 
     List<Report> getByFrom(String userName);
 
-    List<Report> getByTo(String userName);
+    List<Report> getByToUserName(String userName);
+
 }

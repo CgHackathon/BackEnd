@@ -30,7 +30,8 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<Report> getByTo(String userName) {
-        return reportRepo.getByTo(userName);
+    public List<Report> getByToUserName(String userName) {
+        return reportRepo.getByToUserName(userName);
     }
+
 }

@@ -8,5 +8,5 @@ import java.util.List;
 public interface ReportRepo extends JpaRepository<Report,Integer> {
     List<Report> getByFrom(String userName);
 
-    List<Report> getByTo(String userName);
+    List<Report> getByToUserName(String userName);
 }

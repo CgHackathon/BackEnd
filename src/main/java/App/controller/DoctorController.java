@@ -39,7 +39,7 @@ public class DoctorController {
     @GetMapping("/getReport")
     public List<Report> getReport(@RequestHeader("Authorization") String token) {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
-        return reportService.getByTo(userName);
+        return reportService.getByToUserName(userName);
     }
 
 }

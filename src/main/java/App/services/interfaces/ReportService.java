@@ -1,6 +1,7 @@
 package App.services.interfaces;
 
 import App.models.DTO.DTOMessage;
+import App.models.Letter;
 import App.models.Prescription;
 import App.models.Report;
 
@@ -12,4 +13,6 @@ public interface ReportService {
     List<Report> getByToUserName(String userName);
 
     List<Report> getByFromUserName(String userName);
+
+    Report getLetter(DTOMessage dtoMessage);
 }

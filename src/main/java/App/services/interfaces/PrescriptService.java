@@ -1,6 +1,7 @@
 package App.services.interfaces;
 
 import App.models.DTO.DTOMessage;
+import App.models.Letter;
 import App.models.Message;
 import App.models.Prescription;
 
@@ -10,4 +11,5 @@ public interface PrescriptService {
     void sendPrescript(DTOMessage message);
 
     List<Prescription> get(String userName);
+    Prescription getLetter(DTOMessage dtoMessage);
 }

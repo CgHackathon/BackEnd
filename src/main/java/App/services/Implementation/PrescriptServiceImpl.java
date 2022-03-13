@@ -25,6 +25,6 @@ public class PrescriptServiceImpl implements PrescriptService {
 
     @Override
     public List<Prescription> get(String userName) {
-        return prescriptionRepo.getByFrom(userName);
+        return prescriptionRepo.getByFromUserName(userName);
     }
 }

@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     @NotBlank(message = "User Password is required")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Enumerated(EnumType.STRING)

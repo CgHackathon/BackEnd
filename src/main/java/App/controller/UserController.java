@@ -21,5 +21,4 @@ public class UserController {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
         return userService.get(userName);
     }
-
 }

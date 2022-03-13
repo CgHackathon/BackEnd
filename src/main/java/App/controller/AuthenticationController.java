@@ -1,5 +1,6 @@
 package App.controller;
 
+import App.models.DTO.LogInRequest;
 import App.models.DTO.SignEmployeeRequest;
 import App.models.Employee;
 import App.models.User;
@@ -23,44 +24,24 @@ import java.util.Map;
 public class AuthenticationController {
 
     @Autowired
-    AuthenticationManager authenticationManager;
-    @Autowired
-    JwtTokenUtil jwtTokenUtil;
-    @Autowired
-    UserRepo userRepo;
-    @Autowired
     UserService userService;
-    @Autowired
-    EmployeeRepo employeeRepo;
     @Autowired
     EmployeeService employeeService;
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String,String> request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.get("userName"), request.get("password")));
-        final User user = userRepo.getById(request.get("userName"));
-        final String token = jwtTokenUtil.generateToken(user);
-        return ResponseEntity.ok("{\"token\": \"" + token + "\"}");
+    public ResponseEntity<?> login(@RequestBody LogInRequest request) {
+        return userService.login(request);
     }
 
     @PostMapping("/signUser")
     public void signUser(@RequestBody User user) {
-        if (userRepo.existsById(user.getUsername()))
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: User name is already in use!");
-        userRepo.save(userService.handleUser(user));
+        userService.signUser(user);
     }
 
     @PostMapping("/signEmployee")
-    public void signUp(@RequestBody SignEmployeeRequest employee) {
-        if (userRepo.existsById(employee.getUserName()))
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: User Name is already in use!");
-        try{
-            Employee e = employeeService.getEmployee(employee);
-            employeeRepo.save(e);
-        }catch (Exception x){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, x.getMessage());
-        }
+    public void signEmployee(@RequestBody SignEmployeeRequest employee) {
+        employeeService.signEmployee(employee);
     }
 
 }

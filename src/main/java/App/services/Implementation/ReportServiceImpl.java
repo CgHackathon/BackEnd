@@ -24,7 +24,6 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void sendReport(DTOMessage message) {
-        System.out.println(message);
         Report r = getLetter(message);
         if(r.getTo().getRole() != Role.Doctor)
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Error: Report must be sent to doctor role");

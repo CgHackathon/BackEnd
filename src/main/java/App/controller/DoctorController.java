@@ -30,13 +30,13 @@ public class DoctorController {
     }
 
 
-    @PostMapping("/getPrescript")
+    @GetMapping("/getPrescript")
     public List<Prescription> getPrescript(@RequestHeader("Authorization") String token) {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
         return prescriptService.get(userName);
     }
 
-    @PostMapping("/getReport")
+    @GetMapping("/getReport")
     public List<Report> getReport(@RequestHeader("Authorization") String token) {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
         return reportService.getByTo(userName);

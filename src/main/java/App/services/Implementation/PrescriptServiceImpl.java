@@ -24,9 +24,10 @@ public class PrescriptServiceImpl implements PrescriptService {
     }
 
     @Override
-    public List<Prescription> get(String userName) {
+    public List<Prescription> getByFromUserName(String userName) {
         return prescriptionRepo.getByFromUserName(userName);
     }
+
 
     @Override
     public Prescription getLetter(DTOMessage dtoMessage) {
@@ -36,5 +37,10 @@ public class PrescriptServiceImpl implements PrescriptService {
         l.setTime(new Date());
         l.setContent(dtoMessage.getContent());
         return l;
+    }
+
+    @Override
+    public List<Prescription> getByToUserName(String userName) {
+        return prescriptionRepo.getByToUserName(userName);
     }
 }

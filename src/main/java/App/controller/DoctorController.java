@@ -37,7 +37,7 @@ public class DoctorController {
     @GetMapping("/getPrescript")
     public List<Prescription> getPrescript(@RequestHeader("Authorization") String token) {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
-        return prescriptService.get(userName);
+        return prescriptService.getByFromUserName(userName);
     }
 
     @GetMapping("/getReport")

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PrescriptionRepo extends JpaRepository<Prescription,Integer> {
     List<Prescription> getByFromUserName(String userName);
+
+    List<Prescription> getByToUserName(String userName);
 }

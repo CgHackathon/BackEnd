@@ -10,6 +10,9 @@ import java.util.List;
 public interface PrescriptService {
     void sendPrescript(DTOMessage message);
 
-    List<Prescription> get(String userName);
+    List<Prescription> getByFromUserName(String userName);
+
     Prescription getLetter(DTOMessage dtoMessage);
+
+    List<Prescription> getByToUserName(String userName);
 }

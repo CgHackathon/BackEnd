@@ -9,8 +9,7 @@ import java.util.List;
 public interface ReportService {
     void sendReport(DTOMessage message);
 
-    List<Report> getByFrom(String userName);
-
     List<Report> getByToUserName(String userName);
 
+    List<Report> getByFromUserName(String userName);
 }

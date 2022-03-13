@@ -25,8 +25,8 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<Report> getByFrom(String userName) {
-        return reportRepo.getByFrom(userName);
+    public List<Report> getByFromUserName(String userName) {
+        return reportRepo.getByFromUserName(userName);
     }
 
     @Override

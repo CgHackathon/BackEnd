@@ -27,9 +27,9 @@ public class StudentController {
         reportService.sendReport(Report);
     }
 
-    @PostMapping("/getReport")
+    @GetMapping("/getReport")
     public List<Report> getReport(@RequestHeader("Authorization") String token) {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
-        return reportService.getByFrom(userName);
+        return reportService.getByFromUserName(userName);
     }
 }

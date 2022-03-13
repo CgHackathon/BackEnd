@@ -4,9 +4,11 @@ package App.controller;
 import App.models.DTO.DTOMessage;
 import App.models.Prescription;
 import App.models.Report;
+import App.models.User;
 import App.security.JWT.JwtTokenUtil;
 import App.services.interfaces.PrescriptService;
 import App.services.interfaces.ReportService;
+import App.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,9 @@ public class DoctorController {
 
     @Autowired
     ReportService reportService;
+
+    @Autowired
+    UserService userService;
 
     @PostMapping("/sendPrescript")
     public void sendPrescript(@RequestBody DTOMessage prescription) {
@@ -41,5 +46,13 @@ public class DoctorController {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
         return reportService.getByToUserName(userName);
     }
+
+    @GetMapping("/getInfo")
+    public User getInfo(@RequestHeader("Authorization") String token) {
+        String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
+        return userService.get(userName);
+    }
+
+
 
 }

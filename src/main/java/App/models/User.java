@@ -1,6 +1,7 @@
 package App.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.util.*;
 public class User implements UserDetails {
     @Id
     @NotBlank(message = "User Name is required")
+    @JsonProperty("userName")
     private String userName;
 
     @NotBlank(message = "User first Name is required")

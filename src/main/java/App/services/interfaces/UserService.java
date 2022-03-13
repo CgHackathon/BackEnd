@@ -5,4 +5,6 @@ import App.models.User;
 
 public interface UserService {
     User handleUser(User user);
+
+    User get(String userName);
 }

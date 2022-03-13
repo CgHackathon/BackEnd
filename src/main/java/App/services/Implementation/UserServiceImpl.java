@@ -32,5 +32,10 @@ public class UserServiceImpl implements UserDetailsService , UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return user;
     }
+
+    @Override
+    public User get(String userName) {
+        return userRepo.getById(userName);
+    }
 }
 

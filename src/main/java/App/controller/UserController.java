@@ -1,7 +1,6 @@
 package App.controller;
 
 
-import App.models.DTO.UserDTO;
 import App.models.User;
 import App.security.JWT.JwtTokenUtil;
 import App.services.interfaces.UserService;
@@ -18,9 +17,9 @@ public class UserController {
     JwtTokenUtil jwtTokenUtil;
 
     @GetMapping("/getInfo")
-    public UserDTO getInfo(@RequestHeader("Authorization") String token) {
+    public User getInfo(@RequestHeader("Authorization") String token) {
         String userName = jwtTokenUtil.getUserNameFromToken(jwtTokenUtil.parseHeaderAuth(token));
-        return new UserDTO(userService.get(userName));
+        return userService.get(userName);
     }
 
 }

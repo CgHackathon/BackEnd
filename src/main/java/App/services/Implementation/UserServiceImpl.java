@@ -31,8 +31,6 @@ public class UserServiceImpl implements UserDetailsService , UserService {
     AuthenticationManager authenticationManager;
     @Autowired
     JwtTokenUtil jwtTokenUtil;
-    @Autowired
-    EmployeeService employeeService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -54,14 +52,18 @@ public class UserServiceImpl implements UserDetailsService , UserService {
         return user.orElse(null);
     }
 
+
+    /*
+    need to be facade to check if user is verified before signing in
+     */
     @Override
     public ResponseEntity<?> login(LogInRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword()));
         final User user = userRepo.getById(request.getUserName());
-        if(user.getRole()!= Role.Patient){
-            if(!employeeService.CheckVerification(user.getUsername()))
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error: User Didn't verified");
-        }
+//        if(user.getRole()!= Role.Patient){
+//            if(!employeeService.CheckVerification(user.getUsername()))
+//                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error: User Didn't verified");
+//        }
         final String token = jwtTokenUtil.generateToken(user);
         return ResponseEntity.ok("{\"token\": \"" + token + "\"}");
     }

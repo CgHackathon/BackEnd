@@ -58,7 +58,6 @@ class ApplicationTests {
     public void checkAuthority() throws Exception {
         this.mockMvc.perform(get("/")).andExpect(status().is(401));
         this.mockMvc.perform(get("/auth/login")).andExpect(status().is(405));
-
     }
 
 }
